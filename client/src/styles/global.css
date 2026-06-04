@@ -1,0 +1,208 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --bg: #0a0a0a;
+    --bg-2: #111111;
+    --bg-3: #1a1a1a;
+    --border: rgba(255,255,255,0.08);
+    --border-hover: rgba(255,255,255,0.15);
+    --text: #f0f0f0;
+    --text-2: #a0a0a0;
+    --text-3: #606060;
+    --accent: #6351e8;
+    --accent-hover: #7c6af5;
+    --accent-subtle: rgba(99,81,232,0.12);
+    --success: #10b981;
+    --warning: #f59e0b;
+    --danger: #ef4444;
+    color-scheme: dark;
+  }
+
+  .light {
+    --bg: #ffffff;
+    --bg-2: #f8f7ff;
+    --bg-3: #f0eeff;
+    --border: rgba(0,0,0,0.08);
+    --border-hover: rgba(0,0,0,0.15);
+    --text: #0a0a0a;
+    --text-2: #4a4a5a;
+    --text-3: #8a8a9a;
+    --accent: #5240d4;
+    --accent-hover: #6351e8;
+    --accent-subtle: rgba(82,64,212,0.08);
+    color-scheme: light;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Geist', system-ui, sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background: var(--accent-subtle);
+    color: var(--text);
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--border-hover);
+    border-radius: 3px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--text-3);
+  }
+}
+
+@layer components {
+  /* CodeMirror overrides */
+  .cm-editor {
+    height: 100%;
+    outline: none !important;
+    font-family: 'Geist Mono', 'Fira Code', monospace !important;
+    font-size: 14px !important;
+    background: transparent !important;
+  }
+
+  .cm-editor.cm-focused {
+    outline: none !important;
+  }
+
+  .cm-scroller {
+    overflow: auto;
+    font-family: inherit !important;
+    line-height: 1.7 !important;
+  }
+
+  .cm-content {
+    padding: 24px 32px !important;
+    min-height: 100%;
+    caret-color: var(--accent) !important;
+  }
+
+  .cm-line {
+    padding: 0 !important;
+  }
+
+  .cm-gutters {
+    background: transparent !important;
+    border-right: 1px solid var(--border) !important;
+    color: var(--text-3) !important;
+  }
+
+  .cm-activeLineGutter {
+    background: var(--accent-subtle) !important;
+  }
+
+  .cm-activeLine {
+    background: var(--accent-subtle) !important;
+  }
+
+  .cm-selectionBackground {
+    background: rgba(99,81,232,0.25) !important;
+  }
+
+  .cm-cursor {
+    border-left: 2px solid var(--accent) !important;
+  }
+
+  .cm-focused .cm-cursor {
+    border-left-color: var(--accent) !important;
+  }
+
+  /* Markdown preview */
+  .markdown-preview {
+    font-family: 'Geist', system-ui, sans-serif;
+    font-size: 15px;
+    line-height: 1.75;
+    color: var(--text);
+    padding: 24px 32px;
+    max-width: 100%;
+    overflow-x: auto;
+  }
+
+  .markdown-preview h1 { font-family: 'Syne', sans-serif; font-size: 2em; font-weight: 700; margin: 0 0 0.5em; color: var(--text); border-bottom: 1px solid var(--border); padding-bottom: 0.3em; }
+  .markdown-preview h2 { font-family: 'Syne', sans-serif; font-size: 1.5em; font-weight: 600; margin: 1.5em 0 0.5em; color: var(--text); }
+  .markdown-preview h3 { font-size: 1.2em; font-weight: 600; margin: 1.2em 0 0.4em; color: var(--text); }
+  .markdown-preview h4, .markdown-preview h5, .markdown-preview h6 { font-weight: 600; margin: 1em 0 0.3em; color: var(--text-2); }
+  .markdown-preview p { margin: 0 0 1em; }
+  .markdown-preview a { color: var(--accent-hover); text-decoration: underline; text-underline-offset: 2px; }
+  .markdown-preview a:hover { opacity: 0.8; }
+  .markdown-preview code { font-family: 'Geist Mono', monospace; font-size: 0.875em; background: var(--bg-3); padding: 0.15em 0.4em; border-radius: 4px; color: var(--accent-hover); }
+  .markdown-preview pre { background: var(--bg-3); border: 1px solid var(--border); border-radius: 8px; padding: 16px; overflow-x: auto; margin: 1em 0; }
+  .markdown-preview pre code { background: none; padding: 0; color: var(--text); font-size: 0.85em; }
+  .markdown-preview blockquote { border-left: 3px solid var(--accent); margin: 1em 0; padding: 0.5em 1em; background: var(--accent-subtle); border-radius: 0 6px 6px 0; color: var(--text-2); }
+  .markdown-preview ul, .markdown-preview ol { margin: 0.5em 0 1em; padding-left: 1.5em; }
+  .markdown-preview li { margin: 0.25em 0; }
+  .markdown-preview hr { border: none; border-top: 1px solid var(--border); margin: 1.5em 0; }
+  .markdown-preview table { width: 100%; border-collapse: collapse; margin: 1em 0; font-size: 0.9em; }
+  .markdown-preview th { background: var(--bg-3); font-weight: 600; padding: 8px 12px; text-align: left; border-bottom: 2px solid var(--border); }
+  .markdown-preview td { padding: 8px 12px; border-bottom: 1px solid var(--border); }
+  .markdown-preview tr:hover td { background: var(--accent-subtle); }
+  .markdown-preview img { max-width: 100%; border-radius: 6px; }
+  .markdown-preview input[type="checkbox"] { accent-color: var(--accent); margin-right: 6px; }
+
+  /* Presence cursors */
+  .remote-cursor {
+    position: absolute;
+    pointer-events: none;
+    z-index: 10;
+    border-left: 2px solid;
+    height: 1.2em;
+    margin-top: -1px;
+  }
+
+  .remote-cursor-label {
+    position: absolute;
+    top: -20px;
+    left: -2px;
+    font-size: 11px;
+    font-family: 'Geist', sans-serif;
+    padding: 2px 6px;
+    border-radius: 4px 4px 4px 0;
+    white-space: nowrap;
+    pointer-events: none;
+    opacity: 0.9;
+    font-weight: 500;
+  }
+
+  /* Animations */
+  @keyframes spin-slow {
+    to { transform: rotate(360deg); }
+  }
+
+  .animate-spin-slow {
+    animation: spin-slow 3s linear infinite;
+  }
+
+  /* Noise texture overlay */
+  .noise::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.4;
+  }
+}
